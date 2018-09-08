@@ -11,6 +11,7 @@ const usersRouter = require('./routes/users');
  * Controllers (route handlers).
  */
  const userController = require('./controllers/user');
+ const mailController = require('./controllers/mails');
 
 const app = express();
 
@@ -32,6 +33,12 @@ app.get('/api/v1/users', userController.getAllUsers);
 app.get('/api/v1/users/:id', userController.getUserById);
 app.put('/api/v1/users/:id', userController.updateUserById);
 app.delete('/api/v1/users/:id', userController.deleteUserById);
+
+app.post('/api/v1/mails', mailController.postNewMail);
+app.get('/api/v1/mails', mailController.getAllMail);
+app.get('/api/v1/mails/:id', mailController.getMailById);
+app.put('/api/v1/mails/:id', mailController.updateMailById);
+app.delete('/api/v1/mails/:id', mailController.deleteMailById);
 
 module.exports = app;
 app.listen(2611, () => console.log('Express server at 2611'));
